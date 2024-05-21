@@ -2,7 +2,6 @@
 
 import { Button, Callout, TextField,Text } from '@radix-ui/themes';
 import { useState } from 'react';
-import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { useForm, Controller } from 'react-hook-form';
 import axios from 'axios';
@@ -12,6 +11,11 @@ import { createIssueSchema } from '@/app/validationSchema';
 import {z} from 'zod';
 import ErrorMessage from '@/app/components/ErrorMessage';
 import Spinner from '@/app/components/Spinner';
+import dynamic from 'next/dynamic';
+
+const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
+  ssr: false,
+});
 
 type IssueForm = z.infer<typeof createIssueSchema>;
 
@@ -43,9 +47,7 @@ const NewIssuePage = () => {
           <Callout.Text>{error}</Callout.Text>
         </Callout.Root>
       )}
-      <form className="space-y-3"
-      onSubmit={onSubmit}
-      >
+       <form className="space-y-3" onSubmit={onSubmit}>
 
         <TextField.Root placeholder="Title" {...register('title')} >
         </TextField.Root>
