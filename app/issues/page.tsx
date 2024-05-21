@@ -1,6 +1,6 @@
 import React from 'react';
 import prisma from '@/prisma/client';
-
+import IssueActions from './IssueActions';
 import delay from 'delay';
 import { Table, Button } from '@radix-ui/themes';
 import { IssueStatusBadge, Link } from '@/app/components';
@@ -11,11 +11,8 @@ const IssuesPage = async () => {
 
   return (
     <div>
-      <div className='mb-5'>
-        <Button>
-          <Link href="/issues/new">New Issue</Link>
-        </Button>
-      </div>
+      <IssueActions />
+
       <Table.Root variant='surface'>
         <Table.Header>
           <Table.Row>
@@ -48,4 +45,5 @@ const IssuesPage = async () => {
   )
 }
 
-export default IssuesPage
+export const dynamic = 'force-dynamic';
+export default IssuesPage;
