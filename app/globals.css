@@ -23,3 +23,7 @@ body {
     @apply text-zinc-500 hover:text-zinc-800 transition-colors;
   }
 }
+
+.custom-pagination {
+  padding-top: 16px; /* Optional: Add padding above the pagination for additional space */
+}
